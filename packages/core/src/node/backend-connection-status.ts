@@ -12,14 +12,8 @@ import { BackendApplicationContribution } from './backend-application';
 @injectable()
 export class BackendConnectionStatusEndpoint implements BackendApplicationContribution {
 
-    protected app: express.Application | undefined;
-
     configure(app: express.Application): void {
-        this.app = app;
-    }
-
-    onStart(): void {
-        this.app!.get('/alive', (request, response) => response.send());
+        app.get('/alive', (request, response) => response.send());
     }
 
 }
